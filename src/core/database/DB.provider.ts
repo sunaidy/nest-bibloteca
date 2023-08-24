@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize-typescript'
 import { SEQUELIZE } from '../constants'
 
 import { Libro } from '../../libro/entities/libro.entity'
+import { Lector } from '../../lector/entities/lector.entity'
 
 export const databaseProviders = [
     {
@@ -15,7 +16,7 @@ export const databaseProviders = [
                 host: process.env.DB_HOST,
                 port: parseInt(process.env.DB_PORT),
            })
-            sequelize.addModels([Libro])
+            sequelize.addModels([Libro, Lector])
             await sequelize.sync()
             return sequelize
     },

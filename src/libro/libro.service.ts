@@ -1,9 +1,8 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { CreateLibroDto } from './dto/create-libro.dto';
 import { UpdateLibroDto } from './dto/update-libro.dto';
-import { InjectModel } from '@nestjs/sequelize';
 import { Libro } from './entities/libro.entity';
-import { LIBRO_REPOSITORY } from 'src/core/constants';
+import { LIBRO_REPOSITORY } from '../core/constants';
 
 @Injectable()
 export class LibroService {

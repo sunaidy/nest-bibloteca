@@ -6,6 +6,7 @@ export class Libro extends Model {
     type: DataType.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+    unique: true,
   })
   id: number;
 
