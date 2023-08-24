@@ -1,4 +1,5 @@
-import { Column, Model, Table, DataType } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, HasMany } from 'sequelize-typescript';
+import { Prestamo } from 'src/prestamo/entities/prestamo.entity';
 
 @Table
 export class Libro extends Model {
@@ -26,4 +27,7 @@ export class Libro extends Model {
     type: DataType.BOOLEAN
   })
   estado: boolean;
+
+  @HasMany(() => Prestamo)
+  prestamos: Prestamo[];
 }

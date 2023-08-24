@@ -1,4 +1,5 @@
-import { Column, Model, Table, DataType } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, HasMany } from 'sequelize-typescript';
+import { Prestamo } from 'src/prestamo/entities/prestamo.entity';
 
 @Table
 export class Lector extends Model{
@@ -15,4 +16,7 @@ export class Lector extends Model{
         allowNull: true,
       })
       nombre: string;
+
+      @HasMany(() => Prestamo)
+      prestamos: Prestamo[];
 }
