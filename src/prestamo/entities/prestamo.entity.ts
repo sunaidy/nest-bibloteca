@@ -9,8 +9,8 @@ import {
     Table,
     UpdatedAt,
 } from "sequelize-typescript";
-import { Lector } from "src/lector/entities/lector.entity";
-import { Libro } from "src/libro/entities/libro.entity";
+import { Lector } from "../../lector/entities/lector.entity";
+import { Libro } from "../../libro/entities/libro.entity";
 
 @Table
 export class Prestamo extends Model{

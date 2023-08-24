@@ -1,4 +1,4 @@
-import { LECTOR_REPOSITORY } from "src/core/constants";
+import { LECTOR_REPOSITORY } from "../core/constants";
 import { Lector } from "./entities/lector.entity";
 
 

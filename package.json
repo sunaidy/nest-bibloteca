@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.0.0",
     "@nestjs/core": "^10.0.0",
@@ -34,6 +35,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "sequelize": "^6.32.1",
+    "sequelize-mock": "^0.10.2",
     "sequelize-typescript": "^2.1.5",
     "typeorm": "^0.3.17",
     "validation": "^0.0.1"

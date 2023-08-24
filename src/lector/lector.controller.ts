@@ -9,7 +9,7 @@ export class LectorController {
   constructor(private lectorService: LectorService) {}
 
   @Post()
-  create(@Body() createLectorDto: CreateLectorDto) {
+  create(@Body() createLectorDto: CreateLectorDto): Promise<Lector> {
     return this.lectorService.create(createLectorDto);
   }
 

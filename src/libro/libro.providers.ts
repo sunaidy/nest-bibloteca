@@ -1,4 +1,4 @@
-import { LIBRO_REPOSITORY } from "src/core/constants";
+import { LIBRO_REPOSITORY } from "../core/constants";
 import { Libro } from "./entities/libro.entity";
 
 export const libroProviders = [

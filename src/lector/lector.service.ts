@@ -10,9 +10,9 @@ export class LectorService {
     @Inject(LECTOR_REPOSITORY) private readonly lectorRepository: typeof Lector,
 ) { }
 
- async create(lectorDto: CreateLectorDto) {
+ async create(lectorDto: CreateLectorDto):Promise<Lector> {
     try{
-      await this.lectorRepository.create({...lectorDto})
+      return await this.lectorRepository.create({...lectorDto})
     } catch(error){
       throw new HttpException('Error al crear un lector '+ error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
