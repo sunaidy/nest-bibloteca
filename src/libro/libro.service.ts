@@ -10,9 +10,9 @@ export class LibroService {
     @Inject(LIBRO_REPOSITORY) private readonly libroRepository: typeof Libro,
 ) { }
 
-  async create(libroDto: CreateLibroDto) {
+  async create(libroDto: CreateLibroDto): Promise<Libro> {
     try{
-      await this.libroRepository.create({...libroDto})
+      return await this.libroRepository.create({...libroDto})
     } catch(error){
       throw new HttpException('Error al crear un libro '+ error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

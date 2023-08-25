@@ -1,10 +1,9 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { CreatePrestamoDto } from './dto/create-prestamo.dto';
-import { UpdatePrestamoDto } from './dto/update-prestamo.dto';
 import { LIBRO_REPOSITORY, PRESTAMO_REPOSITORY } from '../core/constants';
 import { Prestamo } from './entities/prestamo.entity';
-import { Libro } from 'src/libro/entities/libro.entity';
-import { Lector } from 'src/lector/entities/lector.entity';
+import { Libro } from '../libro/entities/libro.entity';
+import { Lector } from '../lector/entities/lector.entity';
 
 @Injectable()
 export class PrestamoService {
@@ -13,7 +12,7 @@ export class PrestamoService {
     @Inject(LIBRO_REPOSITORY) private libroRepository: typeof Libro,
 ) { }
 
-  async create(prestamoDto: CreatePrestamoDto) {
+  async create(prestamoDto: CreatePrestamoDto): Promise<Prestamo> {
     try{
       const libro = await this.libroRepository.findOne({
         where: {
@@ -26,7 +25,7 @@ export class PrestamoService {
         throw new Error('El libro se encuentra prestado');
       }
 
-      await this.prestamoRepository.create({...prestamoDto})
+      const prestamo = await this.prestamoRepository.create({...prestamoDto})
       await this.libroRepository.update({
         estado: 0,
       }, {
@@ -34,7 +33,7 @@ export class PrestamoService {
           id: prestamoDto.libroId,
         }
       });
-      
+      return prestamo
     } catch(error){
       throw new HttpException('Error al crear un préstamo '+ error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

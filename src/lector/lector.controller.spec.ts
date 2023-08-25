@@ -23,16 +23,22 @@ describe('LectorController', () => {
     controller = module.get<LectorController>(LectorController);
     service = module.get<LectorService>(LectorService);
   });
+
+  it('Se encuentra definido', () => {
+    expect(controller).toBeDefined();
+  });
   
   it("crear lector", async () => {
+
     const lector = {
-      id: faker.number.int(),
       nombre: faker.company.name(),
-      createAt: faker.date.anytime(),
-      updateAt: faker.date.anytime(),
-  };
-    jest.spyOn(service, 'create').mockImplementation();
-    const response = await controller.create({nombre: faker.company.name()});
-    expect(response).toBe(lector);
+    };
+
+    service.create = jest.fn().mockResolvedValue(lector);
+
+    const result = await controller.create(lector);
+
+    expect(result.nombre).toEqual(lector.nombre);
+    expect(service.create).toHaveBeenCalledWith(lector);
   });
 });

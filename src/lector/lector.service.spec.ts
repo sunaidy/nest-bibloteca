@@ -1,18 +1,27 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { LectorService } from './lector.service';
+import { lectorProviders } from './lector.provaiders';
+import { LectorController } from './lector.controller';
+import { faker } from '@faker-js/faker';
 
 describe('LectorService', () => {
   let service: LectorService;
-
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [LectorService],
+      controllers: [LectorController],
+      providers: [
+        LectorService,
+        ...lectorProviders
+      ],
     }).compile();
 
     service = module.get<LectorService>(LectorService);
   });
 
-  it('should be defined', () => {
+  it('Se encuentra definido', () => {
     expect(service).toBeDefined();
   });
+
 });
+
+

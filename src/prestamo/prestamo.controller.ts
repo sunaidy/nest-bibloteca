@@ -1,14 +1,14 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { PrestamoService } from './prestamo.service';
 import { CreatePrestamoDto } from './dto/create-prestamo.dto';
-import { UpdatePrestamoDto } from './dto/update-prestamo.dto';
+import { Prestamo } from './entities/prestamo.entity';
 
 @Controller('prestamo')
 export class PrestamoController {
   constructor(private readonly prestamoService: PrestamoService) {}
 
   @Post()
-  create(@Body() createPrestamoDto: CreatePrestamoDto) {
+  create(@Body() createPrestamoDto: CreatePrestamoDto): Promise<Prestamo> {
     return this.prestamoService.create(createPrestamoDto);
   }
 

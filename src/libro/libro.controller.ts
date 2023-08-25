@@ -9,7 +9,7 @@ export class LibroController {
   constructor(private libroService: LibroService) {}
 
   @Post()
-  create(@Body() createLibroDto: CreateLibroDto) {
+  create(@Body() createLibroDto: CreateLibroDto): Promise<Libro> {
     return this.libroService.create(createLibroDto);
   }
 
