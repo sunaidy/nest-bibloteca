@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "7f2dc305-677a-46f3-8b20-5105a4f65103",
+		"name": "bibloteca",
+		"description": "  \nSe gestiona los catálogo de  \nlibros, los préstamos realizados y los lectores de una biblioteca.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19367949",
+		"_collection_link": "https://web.postman.co/workspace/restaurante~a400b486-9117-4eea-b683-d7173548aca4/collection/19367949-7f2dc305-677a-46f3-8b20-5105a4f65103?action=share&creator=19367949&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Listar  libros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}libro",
+					"host": [
+						"{{base_url}}libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar  prestamo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}prestamo",
+					"host": [
+						"{{base_url}}prestamo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar  lectores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}lector",
+					"host": [
+						"{{base_url}}lector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar  lector dado id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}lector/1",
+					"host": [
+						"{{base_url}}lector"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear  libro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Harry Poter\",\n    \"isbn\": \"1469-tf-999\",\n    \"estado\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}libro",
+					"host": [
+						"{{base_url}}libro"
+					]
+				},
+				"description": "Para crear un libro se debe proporcionar el nombre (debe ser un string), isbn (debe ser un string), estado que debe ser boolean o (0 -1 ). Se devolvera un libro."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear  lector",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Eduardo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}lector",
+					"host": [
+						"{{base_url}}lector"
+					]
+				},
+				"description": "Para crear un libro se debe proporcionar el nombre (debe ser un string), se devolvera un lector"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear  préstamo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lectorId\": 2,\n    \"libroId\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}prestamo",
+					"host": [
+						"{{base_url}}prestamo"
+					]
+				},
+				"description": "Para crear un préstamo se debe proporcionar el identificador del lector y del libro. Automaticamente se creara la fecha en un campo createAt, Se devolvera un lector."
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar  libro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}libro/7",
+					"host": [
+						"{{base_url}}libro"
+					],
+					"path": [
+						"7"
+					]
+				},
+				"description": "Para eliminar un libro se debe proporcionar el identificador del mismo"
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar  lector",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}lector/1",
+					"host": [
+						"{{base_url}}lector"
+					],
+					"path": [
+						"1"
+					]
+				},
+				"description": "Para eliminar un lector se debe proporcionar el identificador del mismo"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un libro dado su id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"La orden del Fenix\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}libro/1",
+					"host": [
+						"{{base_url}}libro"
+					],
+					"path": [
+						"1"
+					]
+				},
+				"description": "Para editar un libro debe pasar por get un identificador y por post el o los campos que desee modificar.\n\nSe devolvera todos los datos del libro editado."
+			},
+			"response": []
+		},
+		{
+			"name": "Editar un lector dado su id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Carmen\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}lector/1",
+					"host": [
+						"{{base_url}}lector"
+					],
+					"path": [
+						"1"
+					]
+				},
+				"description": "Para editar un lector debe pasar por get un identificador y por post el nombre desee modificar."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un libro",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"La orden del Fenix\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}libro/1",
+					"host": [
+						"{{base_url}}libro"
+					],
+					"path": [
+						"1"
+					]
+				},
+				"description": "Obtener libro dado un identificador, el id debe ser un entero"
+			},
+			"response": []
+		}
+	]
+}
